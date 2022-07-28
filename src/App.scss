@@ -1,0 +1,505 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
+
+* {
+  font-family: Open Sans;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 45px 0px 0;
+}
+
+.App {
+  min-height: calc(100vh - 305px);
+}
+
+body {
+  background-repeat: no-repeat left center fixed;
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.btnFollow {
+  margin-left: 15px !important;
+}
+
+.title {
+  text-align: center;
+}
+
+.blur {
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 880px) {
+  .title {
+    text-align: center;
+    font-size: 20px;
+  }
+}
+.margTop {
+  margin-top: 76px;
+}
+
+.blurBackground {
+  position: fixed;
+  top: 0;
+  height: 80px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  z-index: 999;
+}
+
+.blurBackgroundProfil {
+  position: fixed;
+  top: 0;
+  height: 80px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  z-index: 0;
+}
+
+.navProfil {
+  margin-top: 20px;
+}
+
+.logoHaiku {
+  margin-top: -8px;
+  margin-left: -20px;
+  width: 210px;
+}
+
+.buttonNav {
+  margin-right: 14px;
+}
+.logoImg {
+  width: 110px;
+}
+
+.totemItems {
+  text-align: center;
+}
+
+.totemItem {
+  width: 70px;
+}
+
+.totemSelected {
+  border: 1px solid white;
+  border-radius: 25px;
+  width: 75px;
+}
+
+.totemPosition {
+  position: relative;
+  top: -50px;
+  left: -50px;
+}
+
+.favoritePosition {
+  width: 28px !important;
+  height: 28px !important;
+  position: absolute !important;
+  right: -4px;
+  top: -5px;
+}
+
+.emojiPosition {
+  width: 50px !important;
+  height: 50px !important;
+  position: absolute !important;
+  right: -13px;
+  bottom: -27px;
+}
+
+.navUserImg {
+  width: 40px;
+  max-height: 30px;
+  padding-top: 4px;
+}
+.navUserImgLink {
+  height: 0;
+}
+
+.navUserTotem {
+  border: 1px solid white;
+  border-radius: 25px;
+}
+.settingsLogo {
+  margin-right: 20px;
+  margin-top: 8px;
+  width: 25px;
+  filter: invert(0.8);
+}
+
+.textHaiku {
+  padding-left: 16px;
+  padding-top: -10px;
+}
+.tabEmptySpace {
+  margin-top: -14px;
+  height: 70px;
+}
+.loadMoreHaikusIcone {
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+.loadMoreHaikusIcone {
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+/////////////////////////////////////////////
+// BOUTONS FOOTER FILTRES ET NOUVEL HAIKU //
+
+.NewHaikuButtonIcone {
+  position: fixed;
+  width: 100px;
+  right: 6%;
+  bottom: 4px;
+}
+.footerButtons {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  font-size: 22px;
+  // width: 100px;
+  left: 12%;
+  bottom: 2px;
+}
+.footerButtons p {
+  color: #fff;
+  text-decoration: none;
+}
+.moodSelectionButton {
+  margin-right: 20px;
+  justify-content: space-between;
+  justify-items: center;
+}
+.timeFilterSection {
+  display: flex;
+  flex-direction: row;
+}
+.timeFilterSection p {
+  margin-right: 20px;
+  margin-left: 20px;
+  justify-content: space-between;
+  justify-items: center;
+}
+.backgroundfooterButton {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0px -5px 100px rgb(0, 0, 0);
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  bottom: -1px;
+}
+////////// FIN DU CSS BOUTONS FOOTER ////
+/////////////////////////////////////////
+
+#Root {
+  height: 100%;
+}
+
+.haikuDisplay {
+  filter: blur(0.5rem);
+}
+
+.emojiContainer {
+  position: relative;
+  width: 64px;
+  span {
+    color: #949494;
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+  }
+}
+
+.emojisSelect {
+  width: 325px;
+  z-index: 1;
+  position: fixed;
+  background-color: #00000080;
+  border-radius: 25px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.emojisSelectItem {
+  width: 64px;
+}
+
+.pageNotFoundImg {
+  width: 100%;
+  margin-top: 165px;
+  position: absolute;
+}
+
+.pageNotFoundImgO {
+  width: 100%;
+  margin-top: 173px;
+  position: absolute;
+  filter: brightness(0.4) blur(5px) opacity(0.8);
+}
+
+////////////// footer //////////////
+
+.footer-distributed {
+  background: #333333;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: bold 16px sans-serif;
+  padding: 55px 50px;
+  height: 305px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left {
+  width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed h3 {
+  color: #ffffff;
+  font: normal 36px "Open Sans", cursive;
+  margin: 0;
+}
+
+.footer-distributed h3 span {
+  color: lightseagreen;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links {
+  color: #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+.footer-distributed .footer-links a {
+  display: inline-block;
+  line-height: 1.8;
+  font-weight: 400;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-distributed .footer-company-name {
+  color: #222;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center {
+  width: 35%;
+}
+
+.footer-distributed .footer-center i {
+  background-color: #33383b;
+  color: #ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope {
+  font-size: 17px;
+  line-height: 38px;
+}
+
+.footer-distributed .footer-center p {
+  display: inline-block;
+  color: #ffffff;
+  font-weight: 400;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.footer-distributed .footer-center p span {
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.footer-distributed .footer-center p a {
+  color: #5368ff;
+  text-decoration: none;
+}
+
+.footer-distributed .footer-links a:before {
+  content: "|";
+  font-weight: 300;
+  font-size: 20px;
+  left: 0;
+  color: #fff;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+  content: none;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right {
+  width: 20%;
+}
+
+.footer-distributed .footer-company-about {
+  line-height: 20px;
+  color: #92999f;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer-distributed .footer-company-about span {
+  display: block;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons {
+  margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 880px) {
+  .footer-distributed {
+    display: none;
+  }
+
+  .totemItem {
+    width: 60px;
+  }
+}
+
+.animation-area {
+  background: rgb(32, 160, 231);
+  // background: linear-gradient(to left, #8942a8, #ba382f);
+  // background: linear-gradient(to left, #6a7dea, #e01dba);
+  background: linear-gradient(
+    90deg,
+    rgb(32, 160, 231) 0%,
+    rgb(60 190 136) 100%
+  );
+  // background: linear-gradient(to left, #67cd63, #4c4b4c);
+  // background: linear-gradient(to left, #3f57ff, #4c4b4c);
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+}
+.box-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.box-area li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 25px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: animate 20s linear infinite;
+  bottom: -150px;
+}
+.box-area li:nth-child(1) {
+  left: 86%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+.box-area li:nth-child(2) {
+  left: 12%;
+  width: 30px;
+  height: 30px;
+  animation-delay: 1.5s;
+  animation-duration: 10s;
+}
+.box-area li:nth-child(3) {
+  left: 70%;
+  width: 100px;
+  height: 100px;
+  animation-delay: 5.5s;
+}
+.box-area li:nth-child(4) {
+  left: 42%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 15s;
+}
+.box-area li:nth-child(5) {
+  left: 65%;
+  width: 40px;
+  height: 40px;
+  animation-delay: 0s;
+}
+.box-area li:nth-child(6) {
+  left: 15%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3.5s;
+}
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-800px) rotate(360deg);
+    opacity: 0;
+  }
+}
