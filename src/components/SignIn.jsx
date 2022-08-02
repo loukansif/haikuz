@@ -46,12 +46,10 @@ export default function Connexion() {
           handleClickAlert();
         } else if (pass === jresponse.password) {
           localStorage.setItem("userId", jresponse._id);
-          localStorage.setItem("userLastName", jresponse.lastname);
           localStorage.setItem("userFirtsName", jresponse.firstname);
           localStorage.setItem("userEmail", jresponse.email);
           localStorage.setItem("userAdmin", jresponse.admin);
           localStorage.setItem("userTotem", jresponse.totem);
-          localStorage.setItem("userPass", jresponse.password);
           localStorage.setItem("userIsLogged", true);
           handleClickAlertConnect()
           // window.location.reload();

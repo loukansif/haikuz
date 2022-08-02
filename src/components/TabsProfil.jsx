@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
@@ -28,6 +29,7 @@ export default function TabsProfil() {
   let imgEmoji = "";
   const [currentHaiku, setCurrentHaiku] = useState(null);
   const [currentHaikuDel, setCurrentHaikuDel] = useState(null);
+  const [progress, setProgress] = useState([true]);
 
   let reactionsImg = [
     "/assets/emojis/cloud.png",
@@ -227,6 +229,11 @@ export default function TabsProfil() {
             value="1"
             style={{ top: 90, left: 0, marginLeft: 10, marginTop: 20 }}
           >
+          {progress && (
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <CircularProgress />
+            </Box>
+          )}
             {currentHaiku && (
               <div className="emojisSelect">
                 {reactionsImg.map((i, index) => {
@@ -253,6 +260,9 @@ export default function TabsProfil() {
                     nbReaction = haiku.reactionss[i];
                     imgEmoji = reactionsImg[i];
                   }
+                }
+                if (progress) {
+                  setProgress(false);
                 }
                 return localStorage.getItem("userId") === haiku.user._id ? (
                   <div key={haiku._id} onClick={closeVote}>

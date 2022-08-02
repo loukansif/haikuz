@@ -27,17 +27,27 @@ const theme = createTheme({
   },
 });
 
+const getPasswordByEmail = (email) => {
+  fetch(`https://secret-lake-66228.herokuapp.com/users/${email}`)
+    .then((resp) => resp.json())
+    .then((jresponse) => {
+      return jresponse.password
+    })
+    .catch((error) => {
+      window.alert(error);
+      return;
+    })
+}
+
 export default function Settings() {
   let navigate = useNavigate();
   const [form, setForm] = useState({
-    password: localStorage.getItem("userPass"),
+    password: getPasswordByEmail(localStorage.getItem("userEmail")),
     totem: localStorage.getItem("userTotem"),
   });
 
-  useEffect(() => {
-    localStorage.setItem("userTotem", form.totem);
-  }, [form]);
 
+  
   function updateForm(value) {
     return setForm((prev) => {
       return { ...prev, ...value };
@@ -84,7 +94,7 @@ export default function Settings() {
   };
 
   const [open, setOpen] = React.useState(false);
-
+  
   const handleClickAlert = () => {
     setOpen(true);
   };
@@ -98,7 +108,7 @@ export default function Settings() {
     setOpen(false);
     navigate("/", { replace: true });
   };
-
+  
   const [openPass, setOpenPass] = React.useState(false);
 
   const handleClickAlertPass = () => {
@@ -114,13 +124,13 @@ export default function Settings() {
     setOpenPass(false);    
     window.location.reload();
   };
-
+  
   const [openDeconnect, setOpenDeconnect] = React.useState(false);
 
   const handleClickAlertDeconnect = () => {
     setOpenDeconnect(true);
   };
-
+  
   const handleCloseAlertDeconnect = (event, reason) => {
     
     if (reason === "clickaway") {
@@ -131,6 +141,10 @@ export default function Settings() {
     localStorage.clear(); 
     navigate("/", { replace: true });     
   };
+
+  useEffect(() => {
+    localStorage.setItem("userTotem", form.totem);
+  }, [form]);
 
   return (
     <>

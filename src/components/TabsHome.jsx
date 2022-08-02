@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
@@ -19,6 +20,10 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 export default function TabsHome() {
   const [userFollowing, setUserFollowing] = useState([]);
   const [currentHaiku, setCurrentHaiku] = useState(null);
+  const [value, setValue] = useState("1");
+  const [haikus, setHaikus] = useState([]);
+  const [haikusByVote, setHaikusByVote] = useState([]);
+  const [progress, setProgress] = useState([true]);
 
   let imgEmoji = "";
 
@@ -40,12 +45,9 @@ export default function TabsHome() {
     "/assets/emojis/water.png",
   ];
 
-  const [value, setValue] = useState("1");
-  const [haikus, setHaikus] = useState([]);
-  const [haikusByVote, setHaikusByVote] = useState([]);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    setProgress(true);
   };
 
   // récupération de tous les Haikus
@@ -92,16 +94,19 @@ export default function TabsHome() {
   };
 
   const updateReactions = () => {
-    fetch(`https://secret-lake-66228.herokuapp.com/haikus/${currentHaiku._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        reactionss: currentHaiku.reactionss,
-        totalVote: currentHaiku.totalVote,
-      }),
-    })
+    fetch(
+      `https://secret-lake-66228.herokuapp.com/haikus/${currentHaiku._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          reactionss: currentHaiku.reactionss,
+          totalVote: currentHaiku.totalVote,
+        }),
+      }
+    )
       .then(() => {
         handleClickAlert();
       })
@@ -115,7 +120,11 @@ export default function TabsHome() {
     if (!localStorage.getItem("userId")) {
       return;
     }
-    fetch(`https://secret-lake-66228.herokuapp.com/users/user/${localStorage.getItem("userId")}`)
+    fetch(
+      `https://secret-lake-66228.herokuapp.com/users/user/${localStorage.getItem(
+        "userId"
+      )}`
+    )
       .then((resp) => resp.json())
       .then((res) => {
         setUserFollowing(res.following);
@@ -239,6 +248,11 @@ export default function TabsHome() {
           )}
 
           <div className="haikus">
+            {progress && (
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <CircularProgress />
+              </Box>
+            )}
             {haikus.map((haiku) => {
               let nbReaction = 0;
               for (let i = 0; i < haiku.reactionss.length; i++) {
@@ -246,6 +260,9 @@ export default function TabsHome() {
                   nbReaction = haiku.reactionss[i];
                   imgEmoji = reactionsImg[i];
                 }
+              }
+              if (progress) {
+                setProgress(false);
               }
               return (
                 <div
@@ -333,6 +350,11 @@ export default function TabsHome() {
           )}
 
           <div className="haikus">
+            {progress && (
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <CircularProgress />
+              </Box>
+            )}
             {haikusByVote.map((haiku) => {
               let nbReaction = 0;
               for (let i = 0; i < haiku.reactionss.length; i++) {
@@ -340,6 +362,9 @@ export default function TabsHome() {
                   nbReaction = haiku.reactionss[i];
                   imgEmoji = reactionsImg[i];
                 }
+              }
+              if (progress) {
+                setProgress(false);
               }
               return (
                 <div key={haiku._id}>
@@ -436,6 +461,11 @@ export default function TabsHome() {
                 )}
 
                 <div className="haikus">
+                  {progress && (
+                    <Box sx={{ display: "flex", justifyContent: "center" }}>
+                      <CircularProgress />
+                    </Box>
+                  )}
                   {haikus.map((haiku) => {
                     let nbReaction = 0;
                     for (let i = 0; i < haiku.reactionss.length; i++) {
@@ -443,6 +473,9 @@ export default function TabsHome() {
                         nbReaction = haiku.reactionss[i];
                         imgEmoji = reactionsImg[i];
                       }
+                    }
+                    if (progress) {
+                      setProgress(false);
                     }
                     return userFollowing.includes(haiku.user._id) ? (
                       <div key={haiku._id}>
@@ -512,7 +545,7 @@ export default function TabsHome() {
                 </div>
               </>
             ) : (
-              "Vous ne suivez aucune personne!"
+              <p>Vous ne suivez aucune personne!</p>
             )
           ) : (
             "Veuillez vous identifier!"

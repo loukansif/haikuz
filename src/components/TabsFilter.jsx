@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import TabContext from "@mui/lab/TabContext";
 import { useParams } from "react-router-dom";
@@ -14,7 +15,10 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 export default function TabsFilter() {
   const { userId } = useParams();
   let imgEmoji = "";
+  const [value, setValue] = useState("1");
+  const [haikus, setHaikus] = useState([]);
   const [currentHaiku, setCurrentHaiku] = useState(null);
+  const [progress, setProgress] = useState([true]);
   let reactionsImg = [
     "/assets/emojis/cloud.png",
     "/assets/emojis/feuille_orange.png",
@@ -32,8 +36,6 @@ export default function TabsFilter() {
     "/assets/emojis/trefle.png",
     "/assets/emojis/water.png",
   ];
-  const [value, setValue] = useState("1");
-  const [haikus, setHaikus] = useState([]);
 
   const emojisFunction = (haiku) => {
     setCurrentHaiku(haiku);
@@ -190,6 +192,11 @@ export default function TabsFilter() {
               </div>
             )}
             <div className="haikus">
+            {progress && (
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <CircularProgress />
+              </Box>
+            )}
               {haikus.map((haiku) => {
                 let nbReaction = 0;
                 for (let i = 0; i < haiku.reactionss.length; i++) {
@@ -197,6 +204,9 @@ export default function TabsFilter() {
                     nbReaction = haiku.reactionss[i];
                     imgEmoji = reactionsImg[i];
                   }
+                }
+                if (progress) {
+                  setProgress(false);
                 }
                 return userId === haiku.user._id ? (
                   <div key={haiku._id}>
